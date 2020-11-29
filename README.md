@@ -13,11 +13,12 @@ Onderaan de code is een blok te vinden met verschillende functies. Al deze funct
 ```` 
 # Kies hier welke functies je wilt aanroepen
 
-# reynoldsNumber(velocity) #Getal van reynolds berekenen. Parameter = velocity
+# reynoldsNumber(velocity) #Getal van reynolds berekenen. Parameter = snelheid in m/s
 frictieFactor(119420) # Frictie factor berekenen of invoeren. Parameter = reynolds getal
 # velocity() # snelheid berekenen
 # pressureLoss() # Drukval in leiding berekenen
-# pressureSystem() # Drukval door compleet leidingsegment berekenen.
+# pressureSystem() # Drukval door compleet leidingsegment berekenen met appendages.
+# frictionCoefficient() # Wrijvings coefficient berekenen
 ````
 
 ## vragen
