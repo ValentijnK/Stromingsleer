@@ -55,7 +55,7 @@ def velocity(): #berekenen van snelheid in m/s
     print("Snelheid =", round(v, 3), "m/s")
     return round(v, 2)
 
-def pressureLoss(): #berekenen van drulval in leiding.
+def pressureLoss(): #berekenen van drukval in leiding.
     v = velocity()
     re = reynoldsNumber(v)
     l = float(input("Wat is de lengte van de buis in meter?"))
@@ -84,12 +84,13 @@ def pressureSystem (): #bereken van drukval in leidingsegmenten
 
 
 
+# Kies hier welke functies je wilt aanroepen
 
-# reynoldsNumber()
-frictieFactor(119420)
-# velocity()
-# pressureLoss()
-# pressureSystem()
+# reynoldsNumber(velocity) #Getal van reynolds berekenen
+frictieFactor(119420) # Frictie factor berekenen of invoeren.
+# velocity() # snelheid berekenen
+# pressureLoss() # Drukval in leiding berekenen
+# pressureSystem() # Drukval door compleet leidingsegment berekenen.
 
 # Press the green button in the gutter to run the script.
-
+#Copyright (C) 2020  Valentijn Kilian
