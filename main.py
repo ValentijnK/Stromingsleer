@@ -4,11 +4,23 @@
 import math
 from fractions import Fraction as Frac
 
-a = float(input("Wat is de diameter in cm?"))
-rho = float(input("Wat is de rho in kg/m3?"))
+menu = {
+    '1': 'Snelheid berekenen',
+    '2': 'Getal van Reynolds berekenen',
+    '3': 'Frictie factor berekenen',
+    '4': 'Frictie coefficient berekenen',
+    '5': 'Drukval berekenen in een leiding',
+    '6': 'Drukval berekenen in een leiding met appendages'
+}
 
+a = 0
+rho = 0
+re = 0
 
-def reynolds_number(v):  # berekenen van getal van Reynolds
+def reynolds_number():  # berekenen van getal van Reynolds
+    global rho
+    rho = float(input("Wat is de rho in kg/m3?"))
+    v = velocity()
     viscoAns = str(input("Viscositeit in Pa of mPa? (Pa/mPa)"))
     if viscoAns == "Pa":
         visco = float(input("Wat is de viscositeit in Pa?"))
@@ -28,8 +40,8 @@ def reynolds_number(v):  # berekenen van getal van Reynolds
     return re
 
 
-def frictie_factor(re):  # Opvragen van frictie factor
-    # re = re
+def frictie_factor():  # Opvragen van frictie factor
+    re = reynolds_number()
     if re > 3000:
         q = str(input("Mag je uit gaan van een wrijvingsloze toestand? (ja/nee) "))
         if q == "ja":
@@ -40,67 +52,87 @@ def frictie_factor(re):  # Opvragen van frictie factor
                 ff = float(input("Wat is de frictie factor?"))
             elif q2 == "nee":
                 r = float(input("Wat is de relatieve randruwheid?"))
-                ff = 0.25 / math.log10((r/3.7 * a + (5.74 / (re**0.9))))**2  # Swamee-jain vergelijking
+                ff = 0.25 / math.log10((r / 3.7 * a + (5.74 / (re ** 0.9)))) ** 2  # Swamee-jain vergelijking
     elif re < 2000:
         ff = 64 / re
-    print("Frictie factor = ", round(ff, 4))
+    print("Frictie factor = ", round(ff, 5))
 
     return round(ff, 4)
 
 
 def velocity():  # berekenen van snelheid in m/s
+    global a
+    a = float(input("Wat is de diameter in cm?"))
     ans = str(input("volumedebiet in L/min? (ja/nee)"))
     if ans == "ja":
         vb = float(input("Wat is het volumedebiet in L/min?"))
-        v = ((vb/60)*10**-3) / ((math.pi / 4) * ((a*10**-2)**2))
+        v = ((vb / 60) * 10 ** -3) / ((math.pi / 4) * ((a * 10 ** -2) ** 2))
 
     elif ans == "nee":
         vb = float(input("Wat is het volumedebiet in m3/uur?"))
-        v = (vb / 3600) / (0.25 * math.pi * ((a*10**-2)**2))
+        v = (vb / 3600) / (0.25 * math.pi * ((a * 10 ** -2) ** 2))
     print("Snelheid =", round(v, 3), "m/s")
     return round(v, 2)
 
 
 def pressure_loss():  # Berekenen van drukval in leiding.
-    v = velocity()
-    re = reynolds_number(v)
+    global rho, v
+    re = reynolds_number()
     l = float(input("Wat is de lengte van de buis in meter?"))
+    ff = frictie_factor()
 
     if re > 3000:
-        p = frictie_factor(re) * 0.5 * rho * v**2 * (l / (a*10**-2))
-        print("drukval =", p, "Pa" "\t", (p/10**5), "bar")
+        p = ff * 0.5 * rho * v ** 2 * (l / (a * 10 ** -2))
+        print("drukval =", p, "Pa" "\t", (p / 10 ** 5), "bar")
 
 
 def pressure_system():  # Berekenen van drukval in leidingsegmenten met appendages
-    v = velocity()
-    re = reynolds_number(v)
-    ff = frictie_factor(re)
+    ff = frictie_factor()
     appendages = float(input("Wat is de som van de appendages?"))
     rPipe = float(input("Wat is de weerstand van de leiding?"))
     l = float(input("Wat is de lengte van de leiding in meter?"))
 
-    ploss = (appendages * 0.5 * rho * v**2) + rPipe + ff * 0.5 * rho * v**2 * (l / a)
+    ploss = (appendages * 0.5 * rho * v ** 2) + rPipe + ff * 0.5 * rho * v ** 2 * (l / a)
 
-    print("Totale drukverlies met appendages = ", ploss, "Pa \t", (ploss/10**5), "bar")
+    print("Totale drukverlies met appendages = ", ploss, "Pa \t", (ploss / 10 ** 5), "bar")
     return ploss
 
 
 def friction_coefficient():
     f = float(input("Wat is de frictie factor?"))
     l = float(input("Wat is de lengte van de buis?"))
-
-    fc = f * (l / (a*10**-2))
+    a = float(input("Wat is de diameter in cm?"))
+    fc = f * (l / (a * 10 ** -2))
 
     print("Wrijvings coefficient = ", round(fc, 3))
     return round(fc, 3)
 
 
+while True:
+    options = menu.keys()
+    # options.sort()
+    for entry in options:
+        print(entry, menu[entry])
+
+    selection = str(input('Wat wil je berekenen?'))
+    if selection == '1':
+        velocity()
+    elif selection == '2':
+        reynolds_number()
+    elif selection == '3':
+        frictie_factor()
+    elif selection == '4':
+        friction_coefficient()
+    elif selection == '5':
+        pressure_loss()
+    elif selection == '6':
+        pressure_system()
 # Kies hier welke functies je wilt aanroepen
 
 # reynolds_number() # Getal van reynolds berekenen
 # frictie_factor(22382)  # Frictie factor berekenen of invoeren.
 # velocity() #  snelheid berekenen
-pressure_loss()  # Drukval in leiding berekenen
+# pressure_loss()  # Drukval in leiding berekenen
 # pressure_system()  # Drukval door compleet leidingsegment berekenen.
 # friction_coefficient()  # Wrijvings coefficient berekenen.
 # Press the green button in the gutter to run the script.
