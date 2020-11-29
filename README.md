@@ -5,10 +5,12 @@ De meeste formules uit het dictaat over de stromingsleer zijn omgezet in dit pro
 Het programma is geschreven in Python. Als je het programma wil draaien moet je een interpreter gebruiken. 
 
 Geen ervaring met programmeren? 
-[Klik hier voor een online variant.](https://repl.it/languages/python3) Kopieer en plak 'main.py' in deze omgeving en klik op run.
+[Klik hier voor een online variant.](https://repl.it/languages/python3) 
+Kopieer en plak de inhoud 'main.py' in deze omgeving en klik op run.
 
 ## Functies gebruiken
 Onderaan de code is een blok te vinden met verschillende functies. Al deze functies kunnen worden aangeroepen door het '#' teken weg te halen. 
+
 **Let op:** Sommige functies hebben een parameter nodig om te werken. Zie hieronder een voorbeeld.
 ```` 
 # Kies hier welke functies je wilt aanroepen
