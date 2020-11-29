@@ -42,8 +42,8 @@ def frictieFactor(re):  # Opvragen van frictie factor
             elif q2 == "nee":
                 r = float(input("Wat is de relatieve randruwheid?"))
                 ff = 0.25 / math.log10((r/3.7 * a + (5.74 / (re**0.9))))**2  # Swamee-jain vergelijking
-    else:
-        ff = 0.3164 / re**Frac(1, 4)
+    elif re < 2000:
+        ff = 64 / re
     print("Frictie factor = ", round(ff, 4))
 
     return round(ff, 4)
