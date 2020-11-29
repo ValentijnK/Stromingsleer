@@ -23,7 +23,7 @@ def reynoldsNumber(v):  # berekenen van getal van Reynolds
         print("Stroming is laminair")
     elif re > 3000:
         print("Stroming is turbulent")
-    elif re > 2000 and re < 3000:
+    elif 2000 > re < 3000:
         print("Stroming is in overgangsgebied")
 
     return re
@@ -35,7 +35,6 @@ def frictieFactor(re):  # Opvragen van frictie factor
         q = str(input("Mag je uit gaan van een wrijvingsloze toestand? (ja/nee) "))
         if q == "ja":
             ff = 0.3164 / re ** Frac(1, 4)
-
         elif q == "nee":
             q2 = str(input("Valt de frictiefactor af te lezen van het Moody Diagram? (ja/nee)"))
             if q2 == "ja":
@@ -100,8 +99,8 @@ def frictionCoefficient():
 
 # Kies hier welke functies je wilt aanroepen
 
-# reynoldsNumber(velocity) # Getal van reynolds berekenen
-frictieFactor(22382)  # Frictie factor berekenen of invoeren.
+reynoldsNumber(1.50) # Getal van reynolds berekenen
+# frictieFactor(22382)  # Frictie factor berekenen of invoeren.
 # velocity() #  snelheid berekenen
 # pressureLoss()  # Drukval in leiding berekenen
 # pressureSystem()  # Drukval door compleet leidingsegment berekenen.
