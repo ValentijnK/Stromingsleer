@@ -9,7 +9,6 @@ rho = float(input("Wat is de rho in kg/m3?"))
 
 
 def reynoldsNumber(v):  # berekenen van getal van Reynolds
-    # v = float(input("Wat is de snelheid? (in m/s)"))
     viscoAns = str(input("Viscositeit in Pa of mPa? (Pa/mPa)"))
 
     if viscoAns == "Pa":
