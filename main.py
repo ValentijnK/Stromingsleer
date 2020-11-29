@@ -39,9 +39,9 @@ def frictieFactor(re): #opvragen van frictie factor
             ff = 0.25 / math.log10((r/3.7 * a + (5.74 / (re**0.9))))**2 #Swamee-jane vergelijking
     else:
         ff = 0.3164 / re**frac(1, 4)
-    print("Frictie factor = ", ff)
+    print("Frictie factor = ", round(ff, 4))
 
-    return ff
+    return round(ff, 4)
 
 def velocity(): #berekenen van snelheid in m/s
     ans = str(input("volumedebiet in L/min? (ja/nee)"))
@@ -64,33 +64,28 @@ def pressureLoss(): #berekenen van drukval in leiding.
         p = frictieFactor(re) * 0.5 * rho * v**2 * (l / (a*10**-2))
         print("drukval =", p, "Pa" "\t", (p/10**5), "bar")
 
-def pressureSystem (): #bereken van drukval in leidingsegmenten
-    p1 = float(input("Wat is de start druk in bar?"))
-    v1 = float(input("Wat is V1 in m/s?"))
-    v2 = float(input("Wat is V2 in m/s?"))
-    qH = str(input("Is er een hoogte verschil? (ja/nee)"))
-    g = 9.81
-    deltaP = pressureLoss()
+def pressureSystem (): #bereken van drukval in leidingsegmenten met appendages
+    v = velocity()
+    re = reynoldsNumber(v)
+    ff = frictieFactor(re)
+    appendages = float(input("Wat is de som van de appendages?"))
+    rPipe = float(input("Wat is de weerstand van de leiding?"))
+    l = float(input("Wat is de lengte van de leiding in meter?"))
 
-    if qH == "ja":
-        h1 = float(input("Wat is h1 in meters?"))
-        h2 = float(input("Wat is h2 in meters?"))
-        p2 = (rho * g * h1 + 0.5 * rho * v1**2) - (rho * g * h2 + 0.5 * rho * v2**2 + pressureLoss())
-    elif qH == "nee" :
-        p2 = p1 - deltaP
+    ploss = (appendages * 0.5 * rho * v**2) + rPipe + ff * 0.5 * rho * v**2 * (l / a)
 
-    print("P2: \t", p2*10**5, "bar")
-    return p2
+    print("Totale drukverlies met appendages = ", ploss, "Pa \t", (ploss/10**5) , "bar")
+    return ploss
 
 
 
 # Kies hier welke functies je wilt aanroepen
 
 # reynoldsNumber(velocity) #Getal van reynolds berekenen
-frictieFactor(119420) # Frictie factor berekenen of invoeren.
+# frictieFactor(119420) # Frictie factor berekenen of invoeren.
 # velocity() # snelheid berekenen
 # pressureLoss() # Drukval in leiding berekenen
-# pressureSystem() # Drukval door compleet leidingsegment berekenen.
+pressureSystem() # Drukval door compleet leidingsegment berekenen.
 
 # Press the green button in the gutter to run the script.
 #Copyright (C) 2020  Valentijn Kilian
