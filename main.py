@@ -96,6 +96,15 @@ def friction_coefficient():
     return round(fc, 3)
 
 
+def calc_pump_pressure():
+    count_segments = int(input("Hoeveel segmenten zijn er?"))
+    # start_pressure = float(input("Wat is de start druk in bar?"))
+    segments = []
+
+    for s in range(count_segments):
+        diameter = float(input("Wat is de diameter in cm van segment" + str(s)))
+        segments.append({})
+
 # Kies hier welke functies je wilt aanroepen
 
 # reynolds_number(1.50) # Getal van reynolds berekenen
@@ -104,5 +113,6 @@ def friction_coefficient():
 # pressure_loss()  # Drukval in leiding berekenen
 # pressure_system()  # Drukval door compleet leidingsegment berekenen.
 # friction_coefficient()  # Wrijvings coefficient berekenen.
+calc_pump_pressure()
 # Press the green button in the gutter to run the script.
 # Copyright (C) 2020  Valentijn Kilian
