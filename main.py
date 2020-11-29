@@ -8,7 +8,7 @@ a = float(input("Wat is de diameter in cm?"))
 rho = float(input("Wat is de rho in kg/m3?"))
 
 
-def reynoldsNumber(v):  # berekenen van getal van Reynolds
+def reynolds_number(v):  # berekenen van getal van Reynolds
     viscoAns = str(input("Viscositeit in Pa of mPa? (Pa/mPa)"))
 
     if viscoAns == "Pa":
@@ -29,7 +29,7 @@ def reynoldsNumber(v):  # berekenen van getal van Reynolds
     return re
 
 
-def frictieFactor(re):  # Opvragen van frictie factor
+def frictie_factor(re):  # Opvragen van frictie factor
     # re = re
     if re > 3000:
         q = str(input("Mag je uit gaan van een wrijvingsloze toestand? (ja/nee) "))
@@ -62,7 +62,7 @@ def velocity():  # berekenen van snelheid in m/s
     return round(v, 2)
 
 
-def pressureLoss():  # Berekenen van drukval in leiding.
+def pressure_loss():  # Berekenen van drukval in leiding.
     v = velocity()
     re = reynoldsNumber(v)
     l = float(input("Wat is de lengte van de buis in meter?"))
@@ -72,7 +72,7 @@ def pressureLoss():  # Berekenen van drukval in leiding.
         print("drukval =", p, "Pa" "\t", (p/10**5), "bar")
 
 
-def pressureSystem():  # Berekenen van drukval in leidingsegmenten met appendages
+def pressure_system():  # Berekenen van drukval in leidingsegmenten met appendages
     v = velocity()
     re = reynoldsNumber(v)
     ff = frictieFactor(re)
@@ -86,7 +86,7 @@ def pressureSystem():  # Berekenen van drukval in leidingsegmenten met appendage
     return ploss
 
 
-def frictionCoefficient():
+def friction_coefficient():
     f = float(input("Wat is de frictie factor?"))
     l = float(input("Wat is de lengte van de buis?"))
 
@@ -96,14 +96,13 @@ def frictionCoefficient():
     return round(fc, 3)
 
 
-
 # Kies hier welke functies je wilt aanroepen
 
-reynoldsNumber(1.50) # Getal van reynolds berekenen
-# frictieFactor(22382)  # Frictie factor berekenen of invoeren.
+# reynolds_number(1.50) # Getal van reynolds berekenen
+# frictie_factor(22382)  # Frictie factor berekenen of invoeren.
 # velocity() #  snelheid berekenen
-# pressureLoss()  # Drukval in leiding berekenen
-# pressureSystem()  # Drukval door compleet leidingsegment berekenen.
-# frictionCoefficient()  # Wrijvings coefficient berekenen.
+# pressure_loss()  # Drukval in leiding berekenen
+# pressure_system()  # Drukval door compleet leidingsegment berekenen.
+# friction_coefficient()  # Wrijvings coefficient berekenen.
 # Press the green button in the gutter to run the script.
 # Copyright (C) 2020  Valentijn Kilian
