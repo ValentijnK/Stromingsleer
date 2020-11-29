@@ -64,18 +64,18 @@ def velocity():  # berekenen van snelheid in m/s
 
 def pressure_loss():  # Berekenen van drukval in leiding.
     v = velocity()
-    re = reynoldsNumber(v)
+    re = reynolds_number(v)
     l = float(input("Wat is de lengte van de buis in meter?"))
 
     if re > 3000:
-        p = frictieFactor(re) * 0.5 * rho * v**2 * (l / (a*10**-2))
+        p = frictie_factor(re) * 0.5 * rho * v**2 * (l / (a*10**-2))
         print("drukval =", p, "Pa" "\t", (p/10**5), "bar")
 
 
 def pressure_system():  # Berekenen van drukval in leidingsegmenten met appendages
     v = velocity()
-    re = reynoldsNumber(v)
-    ff = frictieFactor(re)
+    re = reynolds_number(v)
+    ff = frictie_factor(re)
     appendages = float(input("Wat is de som van de appendages?"))
     rPipe = float(input("Wat is de weerstand van de leiding?"))
     l = float(input("Wat is de lengte van de leiding in meter?"))
@@ -98,7 +98,7 @@ def friction_coefficient():
 
 # Kies hier welke functies je wilt aanroepen
 
-# reynolds_number(1.50) # Getal van reynolds berekenen
+reynolds_number(1.50) # Getal van reynolds berekenen
 # frictie_factor(22382)  # Frictie factor berekenen of invoeren.
 # velocity() #  snelheid berekenen
 # pressure_loss()  # Drukval in leiding berekenen
