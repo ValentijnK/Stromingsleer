@@ -10,11 +10,10 @@ rho = float(input("Wat is de rho in kg/m3?"))
 
 def reynolds_number(v):  # berekenen van getal van Reynolds
     viscoAns = str(input("Viscositeit in Pa of mPa? (Pa/mPa)"))
-
     if viscoAns == "Pa":
         visco = float(input("Wat is de viscositeit in Pa?"))
         re = (v * rho * (a * 10 ** -2)) / visco
-    elif viscoAns == "mPA":
+    else:
         visco = float(input("Wat is de viscositeit in mPa?"))
         re = (v * rho * (a * 10 ** -2)) / (visco * 10 ** -3)
 
@@ -98,10 +97,10 @@ def friction_coefficient():
 
 # Kies hier welke functies je wilt aanroepen
 
-reynolds_number(1.50) # Getal van reynolds berekenen
+# reynolds_number() # Getal van reynolds berekenen
 # frictie_factor(22382)  # Frictie factor berekenen of invoeren.
 # velocity() #  snelheid berekenen
-# pressure_loss()  # Drukval in leiding berekenen
+pressure_loss()  # Drukval in leiding berekenen
 # pressure_system()  # Drukval door compleet leidingsegment berekenen.
 # friction_coefficient()  # Wrijvings coefficient berekenen.
 # Press the green button in the gutter to run the script.
