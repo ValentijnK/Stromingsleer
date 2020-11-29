@@ -77,6 +77,15 @@ def pressureSystem (): #bereken van drukval in leidingsegmenten met appendages
     print("Totale drukverlies met appendages = ", ploss, "Pa \t", (ploss/10**5) , "bar")
     return ploss
 
+def frictionCoefficient():
+    f = float(input("Wat is de frictie factor?"))
+    l = float(input("Wat is de lengte van de buis?"))
+
+    fc = f * (l / (a*10**-2))
+
+    print("Wrijvings coefficient = ", round(fc, 3))
+    return round(fc, 3)
+
 
 
 # Kies hier welke functies je wilt aanroepen
@@ -85,7 +94,7 @@ def pressureSystem (): #bereken van drukval in leidingsegmenten met appendages
 # frictieFactor(119420) # Frictie factor berekenen of invoeren.
 # velocity() # snelheid berekenen
 # pressureLoss() # Drukval in leiding berekenen
-pressureSystem() # Drukval door compleet leidingsegment berekenen.
-
+# pressureSystem() # Drukval door compleet leidingsegment berekenen.
+frictionCoefficient() # Wrijvings coefficient berekenen
 # Press the green button in the gutter to run the script.
 #Copyright (C) 2020  Valentijn Kilian
