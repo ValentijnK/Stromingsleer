@@ -6,7 +6,8 @@ Het programma is geschreven in Python. Als je het programma wil draaien moet je 
 
 Geen ervaring met programmeren? 
 [Klik hier voor een online variant.](https://repl.it/languages/python3) 
-Kopieer en plak de inhoud 'main.py' in deze omgeving en klik op run.
+
+Kopieer en plak de inhoud van 'main.py' in deze omgeving en klik op run.
 
 ## Functies gebruiken
 Onderaan de code is een blok te vinden met verschillende functies. Al deze functies kunnen worden aangeroepen door het '#' teken weg te halen. 
