@@ -1,5 +1,15 @@
 # Stromingsleer
-De meeste formules uit het dictaat over de stromingsleer zijn omgezet in dit programma.
+De meeste formules uit het dictaat over de stromingsleer zijn omgezet in dit programma. 
+
+**Verwerkte formules:**
+* snelheid in een leiding 
+* Kengetal van Reynolds
+* Frictiefactoren
+* Wrijvingscoëfficïent
+* Weerstandswet van Blasius
+* Uitgebreide wet van Bernoulli (voor het berekenen van pompdruk en drukval in ronde leidingsegmenten.)
+
+
 
 ## Hoe gebruik ik het?
 Het programma is geschreven in Python. Als je het programma wil draaien moet je een interpreter gebruiken. 
