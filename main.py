@@ -27,7 +27,6 @@ def reynolds_number(v):  # berekenen van getal van Reynolds
 
     return re
 
-
 def frictie_factor(re):  # Opvragen van frictie factor
     # re = re
     if re > 3000:
@@ -40,6 +39,7 @@ def frictie_factor(re):  # Opvragen van frictie factor
                 ff = float(input("Wat is de frictie factor?"))
             elif q2 == "nee":
                 r = float(input("Wat is de relatieve randruwheid?"))
+                # test = r/(a*10**-2)
                 ff = 0.25 / math.log10((r/3.7 * a + (5.74 / (re**0.9))))**2  # Swamee-jain vergelijking
     elif re < 2000:
         ff = 64 / re
@@ -95,13 +95,28 @@ def friction_coefficient():
     return round(fc, 3)
 
 
+def drukval_hoogte():
+    global rho
+    rho = rho
+    g = 9.81
+    pw = float(input("Wat is de drukval door wrijving in bar?"))
+    v = float(input("Wat is de snelheid in m/s?"))
+    h = float(input("Wat is het hoogte verschil t.o.v. het eerste leidingsegment in meter?"))
+
+    ph = (rho * g * h + 0.5 * rho * (v**2) + (pw/10**5)) - (0.5 * rho * (v**2))
+    ph = ph/10**5
+    print("Drukval in leiding door de hoogte bedraagt: \b", round(ph, 3), "bar")
+    return round(ph, 3)
+
+
 # Kies hier welke functies je wilt aanroepen
 
-# reynolds_number() # Getal van reynolds berekenen
-# frictie_factor(22382)  # Frictie factor berekenen of invoeren.
+# reynolds_number(5.44) # Getal van reynolds berekenen
+# frictie_factor(386220)  # Frictie factor berekenen of invoeren.
 # velocity() #  snelheid berekenen
-pressure_loss()  # Drukval in leiding berekenen
+# pressure_loss()  # Drukval in leiding berekenen
 # pressure_system()  # Drukval door compleet leidingsegment berekenen.
+drukval_hoogte()  # Drukval door hoogte berekenen.
 # friction_coefficient()  # Wrijvings coefficient berekenen.
 # Press the green button in the gutter to run the script.
 # Copyright (C) 2020  Valentijn Kilian
